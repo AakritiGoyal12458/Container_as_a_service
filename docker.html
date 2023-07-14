@@ -1,0 +1,54 @@
+<script>
+    function list_running_docker() {
+        var xhr = new XMLHttpRequest();
+        var url = "http://ip/cgi-bin/list_docker.py"
+        xhr.open("GET", url);
+        xhr.send()
+
+        xhr.onraedystatechange = funtion()
+        {
+            if (this.readyState == 4) {
+                document.getElementById("d1").innerHTML = this.responseText;
+            }
+        }
+    }
+    function chcek_contaoner_status() {
+        var status_value = document.getElementById("in1").value
+        var xhr = new XMLHttpRequest();
+        var url = "http://ip/cgi-bin/stop_dcoker.py?status=" + status_value;
+        xhr.open("GET", url);
+        xhr.send()
+
+        xhr.onraedystatechange = funtion()
+        {
+            if (this.readyState == 4) {
+                document.getElementById("d2").innerHTML = this.responseText;
+            }
+        }
+    }
+    function stop_docker() {
+        var status_value = document.getElementById("in1").value
+        var xhr = new XMLHttpRequest();
+        var url = "http://ip/cgi-bin/stop_dcoker.py?status=" + status_value;
+        xhr.open("GET", url);
+        xhr.send()
+
+        xhr.onraedystatechange = funtion()
+        {
+            if (this.readyState == 4) {
+                document.getElementById("d3").innerHTML = this.responseText;
+            }
+        }
+    }
+</script>
+
+<h1> welcome to CAAS service </h1>
+<input id="in1" name="status" />
+<br>
+<br>
+<button onclick="chcek_contaoner_status()">check container status</button>
+<button onclick="list_runnning_docker()">List Runnig container</button>
+<button onclick="stop_docker()">Stop Runnig container</button>
+<div id="d1"> list si comming </d1v>
+    <div id="d2"> status is comming </d1v>
+        <div id="d3"> list_stop </d1v>
